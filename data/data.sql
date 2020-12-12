@@ -1,21 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.6.6deb5ubuntu0.5
--- https://www.phpmyadmin.net/
---
--- Host: localhost:3306
--- Generation Time: Nov 23, 2020 at 10:49 AM
--- Server version: 5.7.32-0ubuntu0.18.04.1
--- PHP Version: 7.2.24-0ubuntu0.18.04.7
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `micro`
 --
@@ -49,10 +31,10 @@ INSERT INTO `field` (`id`, `entity_id`, `name`, `code`, `meta`, `definition_name
 (1, 0, 'code', 'code', '{\"type\": \"string\", \"description\": \"The unique identifier for a product\"}', '', 'null', 0, 'CORE', 1, '2020-05-27 21:07:33', '2020-05-27 21:07:33'),
 (2, 0, 'Name', 'name', '{\"type\": \"string\", \"format\": \"evenlength\", \"maxLength\": 10, \"minLength\": 2, \"description\": \"Name of the product\"}', '', 'null', 0, 'CORE', 1, '2020-05-27 21:07:33', '2020-05-27 21:07:33'),
 (3, 0, 'Price', 'price', '{\"type\": \"number\", \"exclusiveMinimum\": 10}', '', 'null', 0, 'CORE', 1, '2020-05-27 21:07:33', '2020-05-27 21:07:33'),
-(4, 0, 'code', 'code', '{\"type\": \"string\", \"description\": \"The unique identifier for a product\"}', '', 'null', 1, 'HEALTH', 1, '2020-05-27 21:07:33', '2020-05-27 21:07:33'),
-(5, 1, 'Name', 'name', '{\"help\": \"Name of t he product. Min 2 and Max 10 with pattern mathching\", \"type\": \"string\", \"pattern\": \"^[a-fA-F0-9]{8}$\", \"maxLength\": 10, \"minLength\": 2, \"description\": \"Name of the product\"}', '', 'null', 2, 'SCHOLAR', 1, '2020-05-27 21:07:33', '2020-05-27 21:07:33'),
-(6, 0, 'Price', 'price', '{\"type\": \"number\", \"exclusiveMinimum\": 10}', '', 'null', 1, 'SCHOLAR', 1, '2020-05-27 21:07:33', '2020-05-27 21:07:33'),
-(7, 1, 'custom', 'custom', '{\"type\": \"string\", \"description\": \"The unique identifier for a product\"}', '', 'null', 2, 'SCHOLAR', 1, '2020-05-27 21:07:33', '2020-05-27 21:07:33'),
+(4, 0, 'code', 'code', '{\"type\": \"string\", \"description\": \"The unique identifier for a product\"}', '', 'null', 1, 'learn', 1, '2020-05-27 21:07:33', '2020-05-27 21:07:33'),
+(5, 1, 'Name', 'name', '{\"help\": \"Name of t he product. Min 2 and Max 10 with pattern mathching\", \"type\": \"string\", \"pattern\": \"^[a-fA-F0-9]{8}$\", \"maxLength\": 10, \"minLength\": 2, \"description\": \"Name of the product\"}', '', 'null', 2, 'ebook', 1, '2020-05-27 21:07:33', '2020-05-27 21:07:33'),
+(6, 0, 'Price', 'price', '{\"type\": \"number\", \"exclusiveMinimum\": 10}', '', 'null', 1, 'ebook', 1, '2020-05-27 21:07:33', '2020-05-27 21:07:33'),
+(7, 1, 'custom', 'custom', '{\"type\": \"string\", \"description\": \"The unique identifier for a product\"}', '', 'null', 2, 'ebook', 1, '2020-05-27 21:07:33', '2020-05-27 21:07:33'),
 (8, 0, 'Authors', 'authors', '{\"type\": \"array\", \"items\": {\"$ref\": \"#/definitions/author\"}, \"default\": []}', 'author', '{\"type\": \"object\", \"required\": [\"name\", \"contributionType\"], \"properties\": {\"name\": {\"type\": \"string\", \"pattern\": \"^[a-fA-F0-9]{8}$\"}, \"email\": {\"type\": \"string\"}, \"contributionType\": {\"type\": \"string\"}}}', 0, 'CORE', 1, '2020-05-27 21:07:33', '2020-05-27 21:07:33');
 
 -- --------------------------------------------------------
@@ -82,8 +64,8 @@ CREATE TABLE `form` (
 
 INSERT INTO `form` (`id`, `entity_id`, `name`, `code`, `level`, `type`, `fields`, `validations`, `definitions`, `created_time`, `updated_time`, `is_active`) VALUES
 (1, 0, 'Product', 'product', 0, 'CORE', '{\"fields\": [\"code\", \"name\", \"price\", \"authors\"]}', '[\"code\", \"name\", \"price\"]', '{}', '2020-05-27 23:40:15', '2020-05-27 23:40:15', b'1'),
-(2, 0, 'Product', 'product', 1, 'HEALTH', '{\"fields\": [\"code\", \"name\"]}', '[\"code\", \"name\"]', '{}', '2020-05-27 23:40:15', '2020-05-27 23:40:15', b'1'),
-(3, 2, 'Product', 'product', 2, 'SCHOLAR', '{\"fields\": [\"code\", \"name\", \"custom\"]}', '[\"code\", \"name\"]', '{}', '2020-05-27 23:40:15', '2020-05-27 23:40:15', b'1');
+(2, 0, 'Product', 'product', 1, 'learn', '{\"fields\": [\"code\", \"name\"]}', '[\"code\", \"name\"]', '{}', '2020-05-27 23:40:15', '2020-05-27 23:40:15', b'1'),
+(3, 2, 'Product', 'product', 2, 'ebook', '{\"fields\": [\"code\", \"name\", \"custom\"]}', '[\"code\", \"name\"]', '{}', '2020-05-27 23:40:15', '2020-05-27 23:40:15', b'1');
 
 -- --------------------------------------------------------
 
@@ -95,7 +77,7 @@ CREATE TABLE `language` (
   `id` bigint(20) NOT NULL,
   `locale` varchar(6) DEFAULT NULL,
   `tenant_id` bigint(20) DEFAULT '0',
-  `domain` varchar(10) DEFAULT 'core' COMMENT 'Domain for the langauge, core, scholar, health etc',
+  `domain` varchar(10) DEFAULT 'core' COMMENT 'Domain for the langauge, core, ebook, learn etc',
   `level` smallint(6) NOT NULL DEFAULT '0',
   `message_key` varchar(255) DEFAULT NULL,
   `message` varchar(255) DEFAULT NULL
@@ -172,10 +154,10 @@ CREATE TABLE `settings` (
 
 INSERT INTO `settings` (`id`, `tenant_id`, `settings`, `type`, `created_time`, `updated_time`) VALUES
 (1, 0, '{\"config1\": \"Core Config 1\", \"config2\": \"Core Config 2\", \"config3\": \"Core config 3\", \"config4\": \"Core config 4\", \"config5\": \"Core config 5\"}', 'SYSTEM', '2020-05-27 06:16:48', '2020-05-27 06:16:48'),
-(2, 0, '{\"config2\": \"Scholar Config 2\"}', 'SCHOLAR', '2020-05-27 06:16:48', '2020-05-27 06:16:48'),
-(3, 0, '{\"config2\": \"Health Config 2\"}', 'HEALTH', '2020-05-27 06:16:48', '2020-05-27 06:16:48'),
-(4, 1, '{\"config3\": \"KIMS Config 3\"}', 'HEALTH', '2020-05-27 06:16:48', '2020-05-27 06:16:48'),
-(5, 2, '{\"config3\": \"Wiely Config 3\", \"wildyConfg1\": \"Dynamic Config for Wiley\"}', 'SCHOLAR', '2020-05-27 06:16:48', '2020-05-27 06:16:48');
+(2, 0, '{\"config2\": \"ebook Config 2\"}', 'ebook', '2020-05-27 06:16:48', '2020-05-27 06:16:48'),
+(3, 0, '{\"config2\": \"learn Config 2\"}', 'learn', '2020-05-27 06:16:48', '2020-05-27 06:16:48'),
+(4, 1, '{\"config3\": \"KIMS Config 3\"}', 'learn', '2020-05-27 06:16:48', '2020-05-27 06:16:48'),
+(5, 2, '{\"config3\": \"Wiely Config 3\", \"wildyConfg1\": \"Dynamic Config for Wiley\"}', 'ebook', '2020-05-27 06:16:48', '2020-05-27 06:16:48');
 
 --
 -- Indexes for dumped tables

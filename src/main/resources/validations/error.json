@@ -1,0 +1,35 @@
+{
+  "schemaLocation": "#/properties/authors",
+  "pointerToViolation": "#/authors",
+  "causingExceptions": [
+    {
+      "schemaLocation": "#/definitions/author",
+      "pointerToViolation": "#/authors/0",
+      "causingExceptions": [],
+      "keyword": "required",
+      "message": "required key [contributionType] not found"
+    },
+    {
+      "schemaLocation": "#/definitions/author",
+      "pointerToViolation": "#/authors/1",
+      "causingExceptions": [
+        {
+          "schemaLocation": "#/definitions/author",
+          "pointerToViolation": "#/authors/1",
+          "causingExceptions": [],
+          "keyword": "required",
+          "message": "required key [name] not found"
+        },
+        {
+          "schemaLocation": "#/definitions/author",
+          "pointerToViolation": "#/authors/1",
+          "causingExceptions": [],
+          "keyword": "required",
+          "message": "required key [contributionType] not found"
+        }
+      ],
+      "message": "2 schema violations found"
+    }
+  ],
+  "message": "3 schema violations found"
+}

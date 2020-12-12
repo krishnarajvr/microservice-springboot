@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+logging: # log rotation policy specified in src/main/resources/logback-spring.xml
+  path: /tmp/micro/logs/micro
+  file: ${logging.path}/micro-api.log
+
+flyway.url: jdbc:mysql://localhost:3307/micro
+flyway.user: root
+flyway.password: root
+flyway.locations: filesystem:migrations/sql
+
+spring:
+  application:
+    name: micro-api
+  datasource:
+    url: ${flyway.url}
+    username: ${flyway.user}
+    password: ${flyway.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: validate
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false # not required since static resources in "resources" folder is not served
+
+application:
+  mode:
+    data-update: true
+    test: true
+  mock-server: http://52.201.212.224:8080

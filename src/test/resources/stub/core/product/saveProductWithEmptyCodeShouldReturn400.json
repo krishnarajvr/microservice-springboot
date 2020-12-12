@@ -1,0 +1,31 @@
+{
+  "id": "c2465499-a1d8-4234-8823-bc06242bc61e",
+  "uuid": "c2465499-a1d8-4234-8823-bc06242bc61e",
+  "request": {
+    "method": "POST",
+    "url": "/products",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "$[?(@.product.code == '')]"
+      }
+    ]
+  },
+  "response": {
+    "status": 400,
+    "jsonBody": {
+      "status": 400,
+      "error": {
+        "code": "BAD_REQUEST",
+        "target": "#",
+        "path": null,
+        "message": "#:required key [code] not found",
+        "details": []
+      },
+      "data": null,
+      "traceId": "77dd4339-0b99-427f-9da3-5b8a0d3702b1"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

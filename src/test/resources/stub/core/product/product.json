@@ -1,0 +1,21 @@
+{
+  "saveProductWithExistingCodeShouldReturn409": {
+    "input": {
+      "product": {
+        "name": "aaBBcc11",
+        "code": "duplicate",
+        "price": 12.0
+
+      }
+    },
+    "output": {
+      "status": 409,
+      "error": {
+        "code": "CONFLICT",
+        "message": "ProductCode duplicate already exists"
+      },
+      "data": {},
+      "traceId": "77dd4339-0b99-427f-9da3-5b8a0d3702b0"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "b2465499-a1d8-4234-8823-bc06242bc61e",
+  "uuid": "b2465499-a1d8-4234-8823-bc06242bc61e",
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/products",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "$[?(@.product.code != '')]"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "status": 200,
+      "error": null,
+      "data": {
+        "product": {
+          "id": 1,
+          "name": "Product stub 2",
+          "code": "code stub 2",
+          "price": 20.0,
+          "createdTime": "2019-09-30T07:24:18.000+05:30",
+          "updatedTime": "2020-04-22T11:12:06.000+05:30"
+        }
+      }
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

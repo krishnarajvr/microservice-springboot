@@ -1,0 +1,81 @@
+{
+  "id": "7665b722-d38b-41a7-8cd2-70ba072031fe",
+  "request": {
+    "url": "/products",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "products": [
+        {
+        }
+      ]
+    }
+  },
+  "uuid": "7665b722-d38b-41a7-8cd2-70ba072031fe",
+  "scenarioName": "product-crud",
+  "requiredScenarioState": "Started"
+}
+
+{
+  "id": "42902800-54ea-4685-b44a-5f38c05005ed",
+  "request": {
+    "url": "/products",
+    "method": "POST",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "$[?(@.product.code != '')]"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "status": 200,
+      "error": null,
+      "data": {
+        "product": {
+          "id": 100,
+          "name": "Product stub 1",
+          "code": "code stub 1",
+          "price": 20.0,
+          "createdTime": "2019-09-30T07:24:18.000+05:30",
+          "updatedTime": "2020-04-22T11:12:06.000+05:30"
+        }
+      }
+    }
+  },
+  "uuid": "42902800-54ea-4685-b44a-5f38c05005ed",
+  "scenarioName": "product-crud",
+  "requiredScenarioState": "Started",
+  "newScenarioState": "productCreated"
+}
+
+{
+  "id": "8c594b12-8948-4719-af60-430dac57c4fd",
+  "request": {
+    "url": "/products",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "status": 200,
+      "error": null,
+      "data": {
+        "product": {
+          "id": 100,
+          "name": "Product stub 1",
+          "code": "code stub 1",
+          "price": 20.0,
+          "createdTime": "2019-09-30T07:24:18.000+05:30",
+          "updatedTime": "2020-04-22T11:12:06.000+05:30"
+        }
+      }
+    }
+  },
+  "uuid": "8c594b12-8948-4719-af60-430dac57c4fd",
+  "scenarioName": "product-crud",
+  "requiredScenarioState": "productCreated"
+}

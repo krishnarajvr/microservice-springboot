@@ -1,0 +1,32 @@
+{
+  "id": "d3465499-a1d8-4234-8823-bc06242bc61e",
+  "uuid": "d3465499-a1d8-4234-8823-bc06242bc61e",
+  "request": {
+    "method": "POST",
+    "url": "/products",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "$[?(@.product.code == 'duplicate')]"
+      }
+    ]
+  },
+  "response": {
+    "status": 409,
+    "jsonBody": {
+      "status": 409,
+      "error": {
+        "code": "CONFLICT",
+        "target": null,
+        "path": null,
+        "message": "ProductCode duplicate already exists",
+        "traceId": null,
+        "details": null
+      },
+      "data": null,
+      "traceId": "77dd4339-0b99-427f-9da3-5b8a0d3702b0"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

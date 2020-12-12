@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema#",
+  "$id": "http://my-paintings-api.com/schemas/painting-schema.json",
+  "title": "Product",  "description": "A product from the catalog",
+  "definitions": {
+    "author": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "name" : "Author Name",
+          "maxLength": 10,
+          "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"
+        },
+        "email": {
+          "type": "string",
+          "format" : "email",
+          "name" : "Author Email"
+        },
+        "contributionType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "contributionType",
+        "email"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "code": {
+      "description": "The unique identifier for a product",
+      "help" : "{name} should be minimum {minLength} char and max {maxLength} and match pattern {pattern}",
+      "type": "string",
+      "name" : "Code",
+      "minLength": 2,
+      "maxLength": 10,
+      "pattern": "^(\\([0-9]{5}\\))$",
+      "dummyData": {}
+    },
+    "name": {
+      "description": "Name of the product",
+      "name" : "Name",
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 20,
+      "help" : "{name} should be minimum {minLength} char and max {maxLength} and match pattern {pattern}",
+      "groovy" : "customKeywordValidation",
+      "ui": {
+        "show": true
+      }
+    },
+    "price": {
+      "type": "number",
+      "name" : "Price",
+      "exclusiveMinimum": 12,
+      "exclusiveMaximum": 30,
+      "test": 123
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/author"
+      },
+      "default": []
+    }
+  },
+  "required": [
+    "code",
+    "name",
+    "price"
+  ]
+}

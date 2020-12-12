@@ -1,0 +1,14 @@
+{
+  "name" : "sample",
+  "code" : "sample",
+  "price" : 100,
+  "authors" : [
+    {
+      "name" : "sample",
+      "email" : "sampleemail"
+    },
+    {
+      "contributionType": "sample"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Product",
+  "description": "A product from the catalog",
+  "type": "object",
+  "properties": {
+    "code": {
+      "description": "Code of the product",
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 10
+    },
+    "name": {
+      "description": "Name of the product",
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 20,
+      "format": "evenlength"
+    },
+    "price": {
+      "type": "number",
+      "exclusiveMinimum": 10
+    }
+  },
+  "required": [
+    "code",
+    "name",
+    "price"
+  ]
+}

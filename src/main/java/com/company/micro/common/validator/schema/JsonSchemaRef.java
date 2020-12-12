@@ -1,0 +1,55 @@
+/*
+ * Copyright (c) 2020 Network New Technologies Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.company.micro.common.validator.schema;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
+import java.util.Set;
+
+/**
+ * Use this object instead a JsonSchema for references.
+ * <p>
+ * This reference may be empty (if the reference is being parsed) or with data (after the reference has been parsed),
+ * helping to prevent recursive reference to cause an infinite loop.
+ */
+
+public class JsonSchemaRef {
+
+    private JsonSchema schema;
+    private ValidationContext validationContext;
+    private String refValue;
+
+    public JsonSchemaRef(ValidationContext validationContext, String refValue) {
+        this.validationContext = validationContext;
+        this.refValue = refValue;
+    }
+
+    public JsonSchemaRef(JsonSchema schema) {
+        this.schema = schema;
+    }
+
+    public void set(JsonSchema schema) {
+        this.schema = schema;
+    }
+
+    public Set<ValidationMessage> validate(JsonNode node, JsonNode rootNode, String at) {
+        return schema.validate(node, rootNode, at);
+    }
+
+    public JsonSchema getSchema() {
+        return schema;
+    }
+}

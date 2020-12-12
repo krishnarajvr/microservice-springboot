@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <appender name="APPLICATION-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"></encoder>
+        <file>${LOG_PATH}/micro-${tenant:-core}-application.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/archived/micro-application-%d{yyyy-MM-dd}.%i.log.${tenant:-core}</fileNamePattern>
+            <maxFileSize>100KB</maxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="ERROR-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"></encoder>
+        <file>${LOG_PATH}/micro-${tenant:-core}-error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/archived/micro-error-%d{yyyy-MM-dd}.%i.log.${tenant:-core}</fileNamePattern>
+            <maxFileSize>100KB</maxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="INFO-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"></encoder>
+        <file>${LOG_PATH}/micro-${tenant:-core}-info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/archived/micro-info-%d{yyyy-MM-dd}.%i.log.${tenant:-core}</fileNamePattern>
+            <maxFileSize>100KB</maxFileSize>
+        </rollingPolicy>tenant
+    </appender>
+
+    <appender name="AUDIT-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"></encoder>
+        <file>${LOG_PATH}/micro-${tenant:-core}-audit.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/archived/micro-audit-%d{yyyy-MM-dd}.%i.log.${tenant:-core}</fileNamePattern>
+            <maxFileSize>100KB</maxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="error-log" level="INFO"  additivity="false">
+        <appender-ref ref="ERROR-LOG" />
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <logger name="audit-log" level="INFO" additivity="false">
+        <appender-ref ref="AUDIT-LOG" />
+    </logger>
+
+    <logger name="info-log" level="INFO" additivity="false">
+        <appender-ref ref="INFO-LOG" />
+    </logger>
+
+    <logger name="app-log" level="TRACE"  additivity="false">
+        <appender-ref ref="APPLICATION-LOG" />
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <springProfile name="local">
+        <root level="TRACE">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="APPLICATION-LOG"/>
+            <appender-ref ref="ERROR-LOG" />
+        </root>
+    </springProfile>
+
+    <springProfile name="dev">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="APPLICATION-LOG"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="qa">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="APPLICATION-LOG"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="stage">
+        <root level="WARN">
+            <appender-ref ref="APPLICATION-LOG"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <root level="WARN">
+            <appender-ref ref="APPLICATION-LOG"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="docker">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="APPLICATION-LOG"/>
+        </root>
+    </springProfile>
+</configuration>
